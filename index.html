@@ -31,48 +31,40 @@
       </h1>
       <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
       <script>
-        liff
-          .init({
-            liffId: "2007154146-Y5jGo0G3", // あなたのLIFF ID
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+      liff.init({
+        liffId: "2007154146-Y5jGo0G3"
+      }).then(async () => {
+        if (!liff.isLoggedIn()) {
+          liff.login();
+        } else {
+          try {
+            const profile = await liff.getProfile();
+            const userId = profile.userId;
       
-        liff.ready.then(() => {
-          if (!liff.isLoggedIn()) {
-            liff.login();
-          }
-      
-          // ユーザープロフィール情報を取得
-          liff
-            .getProfile()
-            .then((profile) => {
-              const userId = profile.userId; // ユーザーIDを取得
-      
-      // 同じinput要素を使い回すのではなく、複数のフォームに別々のhiddenフィールドを追加したい場合
-      ["userForm1", "userForm2", "userForm3"].forEach(formId => {
-        const userIdField = document.createElement("input");
-        userIdField.type = "hidden";
-        userIdField.name = "userId";
-        userIdField.value = userId;
-        document.getElementById(formId).appendChild(userIdField);
-      });
-      
-              // 必要に応じてボタンのテキストを変更する
-              const submitButton1 = document.querySelector(".button1");
-              submitButton1.textContent = "ユーザー登録";
-
-              const submitButton2 = document.querySelector(".button2");
-              submitButton2.textContent = "スタンプラリーカード";
-
-              const submitButton3 = document.querySelector(".button3");
-              submitButton3.textContent = "スタンプ獲得";
-            })
-            .catch((err) => {
-              console.log("プロフィール取得エラー: ", err);
+            // 各フォームにユーザーIDを追加
+            ["userForm1", "userForm2", "userForm3"].forEach(formId => {
+              const form = document.getElementById(formId);
+              if (form) {
+                const userIdField = document.createElement("input");
+                userIdField.type = "hidden";
+                userIdField.name = "userId";
+                userIdField.value = userId;
+                form.appendChild(userIdField);
+              }
             });
-        });
+      
+            // ボタンのテキストを変更
+            document.querySelector(".button1").textContent = "ユーザー登録";
+            document.querySelector(".button2").textContent = "スタンプラリーカード";
+            document.querySelector(".button3").textContent = "スタンプ獲得";
+          } catch (err) {
+            console.log("プロフィール取得エラー: ", err);
+          }
+        }
+      }).catch(err => {
+        console.log("LIFF初期化エラー:", err);
+      });
+
       </script>
         <div class="tabs">
             <input id="registration" type="radio" name="tab_item">
@@ -96,7 +88,7 @@
                         <span class="p-country-name" style="display: none">Japan</span>
                         <h3 class="question">①イベントで使用する参加名(ニックネーム)を入力してください</h3>
                         
-                        <input type="text name="name" id="name" />
+                        <input type="text" name="name" id="name" />
                         
                         <h4>
                           本名でなくて大丈夫です👌<br />
@@ -231,8 +223,9 @@
                         action="https://script.google.com/macros/s/AKfycbwDtL30-poz7VwxlaJcHTydg_2KmMMaJt9m1Axak7r37LjzMTDRZsjeTHa845LdwtUG/exec"
                         method="post"
                         >
+                        <h2>②スポットIDを貼り付ける</h2>
                         <label for="spotId"
-                        ><h2>②スポットIDを貼り付ける</h2>
+                        >
                         <span class="required">
                         先ほどコピーした値を貼り付けてください！</span
                         ></label
@@ -322,7 +315,7 @@
 
  
  <nav>
-    <ui class="menu">
+    <ul class="menu">
       <li>
         <a href="https://chikarauemori.github.io/test57/" target="_self"
           ><i class="fa-solid fa-house"></i><br /><span class="iconname"
@@ -353,6 +346,7 @@
           ></a
         >
       </li>
+    </ul>
   </nav>
  
 <style>
