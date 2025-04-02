@@ -60,8 +60,14 @@
       });
       
               // 必要に応じてボタンのテキストを変更する
-              const submitButton = document.querySelector("button");
+              const submitButton = document.querySelector(".button1");
+              submitButton.textContent = "ユーザー登録";
+
+              const submitButton = document.querySelector(".button2");
               submitButton.textContent = "スタンプラリーカード";
+
+              const submitButton = document.querySelector(".button3");
+              submitButton.textContent = "スタンプ獲得";
             })
             .catch((err) => {
               console.log("プロフィール取得エラー: ", err);
@@ -191,7 +197,7 @@
                         <h3 class="question">⑥日中繋がる連絡先を入力してください</h3>
                         <h4>ハイフンなしで数値のみで入力してください。</h4>
                         <input type="text" name="phoneNumber" id="phoneNumber" /><br>
-                        <button type="submit" value>ログインされていません</button>
+                        <button class="button1" type="submit" value>ログインされていません</button>
                         </form>
                     </p> 
         
@@ -210,7 +216,7 @@
                                 method="post"
                                 >
                              <!-- ユーザーIDは動的に追加されます -->
-                             <button type="submit">ログインされていません</button>
+                             <button class="button2" type="submit">ログインされていません</button>
                             </form>
                     </p> 
         
@@ -233,7 +239,7 @@
                         ><br />
                         <input type="text" name="spotId" id="spotId" required /><br />
                         <!-- ユーザーIDは動的に追加されます -->
-                        <button type="submit">ログインされていません</button>
+                        <button class="button3" type="submit">ログインされていません</button>
                         </form>
                     </p> 
             
