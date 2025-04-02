@@ -60,14 +60,14 @@
       });
       
               // 必要に応じてボタンのテキストを変更する
-              const submitButton = document.querySelector(".button1");
-              submitButton.textContent = "ユーザー登録";
+              const submitButton1 = document.querySelector(".button1");
+              submitButton1.textContent = "ユーザー登録";
 
-              const submitButton = document.querySelector(".button2");
-              submitButton.textContent = "スタンプラリーカード";
+              const submitButton2 = document.querySelector(".button2");
+              submitButton2.textContent = "スタンプラリーカード";
 
-              const submitButton = document.querySelector(".button3");
-              submitButton.textContent = "スタンプ獲得";
+              const submitButton3 = document.querySelector(".button3");
+              submitButton3.textContent = "スタンプ獲得";
             })
             .catch((err) => {
               console.log("プロフィール取得エラー: ", err);
@@ -87,7 +87,7 @@
                     <p class="c-txtsp">
                         <h2>ユーザー登録</h2>
                         <form
-                              id="userForm2"
+                              id="userForm1"
                               action="https://script.google.com/macros/s/AKfycbz7tQTqCiiau4aD4asjUXF33i76AerzeRjGItg238-Mlz1LWSVPgfLROS4E6FXOlGbGZA/exec"
                               method="post"
                               class="h-adr"
@@ -96,7 +96,7 @@
                         <span class="p-country-name" style="display: none">Japan</span>
                         <h3 class="question">①イベントで使用する参加名(ニックネーム)を入力してください</h3>
                         
-                        <input type="text" name="name" id="name" />
+                        <input type="text name="name" id="name" />
                         
                         <h4>
                           本名でなくて大丈夫です👌<br />
@@ -211,7 +211,7 @@
                         <h2>スタンプラリーカード</h2>
                             <h3>現在の獲得スタンプ数を確認できます！</h3>
                             <form
-                                id="userForm1"
+                                id="userForm2"
                                 action="https://script.google.com/macros/s/AKfycby5l87fl2ZxKaRSskaNO0qJy-fS_aPjEZJlgGx2oH9-GHSX9br0xM1E9n2Ru-SYm4KO2g/exec"
                                 method="post"
                                 >
