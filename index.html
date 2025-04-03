@@ -29,58 +29,22 @@
         クールシェア宝塚2025<br />
         スタンプラリーカード
       </h1>
-      <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-      <script>
-      liff.init({
-        liffId: "2007154146-Y5jGo0G3"
-      }).then(async () => {
-        if (!liff.isLoggedIn()) {
-          liff.login();
-        } else {
-          try {
-            const profile = await liff.getProfile();
-            const userId = profile.userId;
-      
-            // 各フォームにユーザーIDを追加
-            ["userForm1", "userForm2", "userForm3"].forEach(formId => {
-              const form = document.getElementById(formId);
-              if (form) {
-                const userIdField = document.createElement("input");
-                userIdField.type = "hidden";
-                userIdField.name = "userId";
-                userIdField.value = userId;
-                form.appendChild(userIdField);
-              }
-            });
-      
-            // ボタンのテキストを変更
-            document.querySelector(".button1").textContent = "ユーザー登録";
-            document.querySelector(".button2").textContent = "スタンプラリーカード";
-            document.querySelector(".button3").textContent = "スタンプ獲得";
-          } catch (err) {
-            console.log("プロフィール取得エラー: ", err);
-          }
-        }
-      }).catch(err => {
-        console.log("LIFF初期化エラー:", err);
-      });
 
-      </script>
         <div class="tabs">
             <input id="stamp" type="radio" name="tab_item"  checked>
             <label class="tab_item" for="stamp">スタンプ獲得 </label>
             <input id="mypage" type="radio" name="tab_item" >
-            <label class="tab_item" for="mypage">マイページ</label>
+            <label class="tab_item" for="mypage">スタンプカード</label>
             <input id="registration" type="radio" name="tab_item">
             <label class="tab_item" for="registration">ユーザー登録</label>
 
             <div class="tab_content" id="registration_content">
                 <div class="tab_content_description">
                     <p class="c-txtsp">
-                        <h2>ユーザー登録</h2>
+                        <h2 class="title">ユーザー登録</h2>
                         <form
                               id="userForm1"
-                              action="https://script.google.com/macros/s/AKfycbzvyIOvNQd5M8ZFpx-p9Ri4LDWQkMsRG8KyK3XN-mlJxbLHzOW_Aynp_fGiCGnNo_n7Eg/exec"
+                              action="https://script.google.com/macros/s/AKfycbyCUp5JcAToqwyrZlCIvuLPIrms6M09QN8T6sABSs3VM1vcPykl_yZk4lnmCJbFnjtfQA/exec"
                               method="post"
                               class="h-adr"
                         
@@ -148,48 +112,8 @@
                         <input type="hidden" name="sexList" id="sexList" />
                         <input type="hidden" name="ageList" id="ageList" />
                         <input type="hidden" name="occupationList" id="occupationList" />
-                        
-                        <h3 class="question">⑤住所を入力してください</h3>
-                        〒<input
-                          type="text"
-                          name="address-1"
-                          id="address-1"
-                          class="p-postal-code"
-                          size="3"
-                          maxlength="3"
-                        />
-                        -
-                        <input
-                          type="text"
-                          name="address-2"
-                          id="address-2"
-                          class="p-postal-code"
-                          size="4"
-                          maxlength="4"
-                        /><br />
-                        都道府県:<input
-                          type="text"
-                          name="address-3"
-                          id="address-3"
-                          class="p-region"
-                        /><br />
-                        地区町村:<input
-                          type="text"
-                          name="address-4"
-                          id="address-4"
-                          class="p-locality"
-                        /><br />
-                        町名:<input
-                          type="text"
-                          name="address-5"
-                          id="address-5"
-                          class="p-street-address p-extended-address"
-                        /><br />
-                        番地:<input type="text" name="address-6" id="address-6" />
-                        <h3 class="question">⑥日中繋がる連絡先を入力してください</h3>
-                        <h4>ハイフンなしで数値のみで入力してください。</h4>
-                        <input type="text" name="phoneNumber" id="phoneNumber" /><br>
-                        <button class="button1" type="submit" value>ログインされていません</button>
+                          
+                        <button class="button1" type="submit" value>ログインされていません</button> 
                         </form>
                     </p> 
         
@@ -200,7 +124,8 @@
             <div class="tab_content" id="mypage_content">
                 <div class="tab_content_description">
                     <p class="c-txtsp">
-                        <h2>スタンプラリーカード</h2>
+                      <img class="attention" src="./ユーザー登録.png">
+                        <h2 class="title">スタンプラリーカード</h2>
                             <h3>現在の獲得スタンプ数を確認できます！</h3>
                             <form
                                 id="userForm2"
@@ -223,9 +148,12 @@
                         action="https://script.google.com/macros/s/AKfycbybTNYN21_S6St7VRoVlC_41t-n-yJRCevatUZSQn8O9a7rgrz03ZyF0MI7wSiYYlGi/exec"
                         method="post"
                         >
-                        <h2>①QRコードを読み込む</h2>
-                        <a href="https://liff.line.me/2007108080-jR8JqOgX" target="_self">ここをクリック!!</a>
-                        <h2>②スポットIDを貼り付ける</h2>
+                        <img class="attention" src="./ユーザー登録.png">
+                        <h2 class="title">スポットQRコードの読み取り</h2>
+                        <h2>①QRコードを読み込む<br>②スポットIDをコピー<br>
+                        <a href="https://liff.line.me/2007108080-jR8JqOgX" target="_self" class="qrUrl">ここをクリック!!</a></h2>
+
+                        <h2>③スポットIDを貼り付ける</h2>
                         <label for="spotId"
                         >
                         <span class="required">
@@ -244,6 +172,12 @@
         </div>
 
         <style>
+            .title {
+              border-bottom-style: double;
+              border-color: blue;
+              display: inline-block;
+      
+            }
             .tabs {
                 margin-top: 50px;
                 padding-bottom: 40px;
@@ -297,6 +231,8 @@
                 background-color: #5ab4bd;
                 color: #fff;
             }
+            
+
         </style>
 
       <br>
@@ -421,6 +357,15 @@
       .information{
         border-style: dotted;
         display: inline-block;
+      }
+
+      .attention {
+        width: 100%;
+        border-style: double;
+        border-color: red;
+            }
+      .qrUrl {
+        color: red;
       }
       </style>
   </body>
